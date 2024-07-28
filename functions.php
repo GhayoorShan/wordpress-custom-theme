@@ -16,10 +16,6 @@ add_action('wp_enqueue_scripts', 'school_recover_enqueue_scripts');
 // Theme setup
 function school_recover_theme_setup() {
     add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
-    add_theme_support('custom-logo');
-    add_theme_support('customize-selective-refresh-widgets');
-    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
     
     // Register navigation menus
     register_nav_menus(array(

@@ -13,12 +13,30 @@ Text Domain: school-recover
 // Import Google Font
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
+// Variables
 $primary-color: #6eb548;
 $secondary-color: #96bb7c;
 $white-color: #fff;
 $gray-color: #333;
 $box-shadow: 0px 13px 19px 0px #00000012;
 
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+// Base Styles
 body {
   font-family: "Montserrat", Arial, sans-serif;
   margin: 0;
@@ -29,12 +47,13 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
+// Header
 header {
-  display: flex;
+  @include flex-center;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 0;
 
   .brandname {
@@ -44,15 +63,13 @@ header {
 
   nav {
     ul {
+      @include flex-center;
       list-style: none;
-      display: flex;
       gap: 20px;
       padding: 0;
       margin: 0;
 
       li {
-        display: inline;
-
         a {
           text-decoration: none;
           color: $gray-color;
@@ -62,7 +79,7 @@ header {
   }
 
   .buttons {
-    display: flex;
+    @include flex-center;
     gap: 10px;
 
     a {
@@ -80,11 +97,59 @@ header {
       }
     }
   }
+
+  @media (max-width: 768px) {
+    @include flex-column;
+    align-items: flex-start;
+
+    .brandname {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      @include flex-column;
+      gap: 10px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 0;
+
+    .brandname {
+      font-size: 18px;
+    }
+
+    nav ul {
+      gap: 5px;
+
+      li a {
+        font-size: 16px;
+      }
+    }
+
+    .buttons {
+      @include flex-column;
+      align-items: stretch;
+
+      a {
+        padding: 8px 10px;
+        text-align: center;
+      }
+    }
+  }
 }
 
+// Hero Section
 .hero {
-  display: flex;
-  align-items: end;
+  @include flex-center;
+  align-items: flex-end;
 
   .text {
     width: 60%;
@@ -124,7 +189,7 @@ header {
 
         &.learn {
           border: 1px solid $primary-color;
-          color: $primary-color !important;
+          color: $primary-color;
         }
       }
     }
@@ -145,10 +210,58 @@ header {
       z-index: -1;
     }
   }
+
+  @media (max-width: 768px) {
+    @include flex-column;
+    align-items: center;
+    text-align: center;
+
+    .text {
+      width: 100%;
+      padding: 50px 0 20px;
+
+      h1 {
+        font-size: 48px;
+        padding-right: 0;
+      }
+
+      p {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      .cta {
+        @include flex-column;
+        gap: 10px;
+      }
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+
+      img {
+        position: static;
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .text h1 {
+      font-size: 28px;
+    }
+
+    .text p {
+      font-size: 14px;
+    }
+  }
 }
 
+// Features Section
 .features {
-  display: flex;
+  @include flex-center;
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 80px;
@@ -157,6 +270,7 @@ header {
     background-color: $white-color;
     box-shadow: $box-shadow;
     padding: 35px;
+    text-align: center;
 
     h3 {
       font-size: 24px;
@@ -173,10 +287,26 @@ header {
       margin-bottom: 20px;
     }
   }
+
+  @media (max-width: 768px) {
+    @include flex-column;
+    gap: 40px;
+  }
+
+  @media (max-width: 480px) {
+    .feature h3 {
+      font-size: 18px;
+    }
+
+    .feature p {
+      font-size: 14px;
+    }
+  }
 }
 
+// Stats Section
 .stats {
-  display: flex;
+  @include flex-center;
   justify-content: space-around;
   padding: 100px 0 50px;
 
@@ -195,11 +325,22 @@ header {
       color: #252b42;
     }
   }
+
+  @media (max-width: 768px) {
+    @include flex-column;
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .stat h3 {
+      font-size: 36px;
+    }
+  }
 }
 
+// Client Section
 .client {
-  display: flex;
-  align-items: center;
+  @include flex-center;
   padding: 100px 0;
 
   .text {
@@ -229,9 +370,20 @@ header {
       max-width: 100%;
     }
   }
-}
 
-nav {
-  font-size: 14px;
-  font-weight: 700;
+  @media (max-width: 768px) {
+    @include flex-column;
+    text-align: center;
+
+    .image {
+      order: -1;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .text h2 {
+      font-size: 32px;
+    }
+  }
 }
