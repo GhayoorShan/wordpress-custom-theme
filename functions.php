@@ -4,7 +4,7 @@ function school_recover_enqueue_scripts() {
     // Enqueue styles
     wp_enqueue_style('bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap', false);
-    wp_enqueue_style('school-recover-style', get_stylesheet_uri());
+    wp_enqueue_style('school-recover-style', get_template_directory_uri() . '/assets/css/style.css'); // Change to the compiled CSS
 
     // Enqueue scripts
     wp_enqueue_script('jquery');
